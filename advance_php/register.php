@@ -30,3 +30,24 @@ Name <span>*</span> : <input type="text" name="name">
 	})
 	
 </script>
+<script type="text/javascript">
+	$(document).on('click','#saveBtn',function(){
+		$.ajax({
+			url: 'controller.php',
+		    type: 'POST',  // http method
+		    data: $('form').serialize(),
+		    success: function (data) {
+		    	//alert(data);
+		    	Swal.fire(
+				  'Good job!',
+				 	data,
+				  'success'
+				)
+		    	$('form')[0].reset();
+		    },
+		    error: function ( errorMessage) {
+		        alert('Error => '+errorMessage);
+		    }
+		});
+	});
+</script>
